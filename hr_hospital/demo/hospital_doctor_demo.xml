@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hospital_doctor_1" model="hospital.doctor">
+        <field name="name">House MD</field>
+    </record>
+    <record id="hospital_doctor_2" model="hospital.doctor">
+        <field name="name">Eric Forman MD</field>
+    </record>
+    <record id="hospital_doctor_3" model="hospital.doctor">
+        <field name="name">Robert Chase MD</field>
+    </record>
+</odoo>

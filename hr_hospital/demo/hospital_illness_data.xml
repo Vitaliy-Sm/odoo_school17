@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hospital_illness_1" model="hospital.illness">
+        <field name="name">Lupus</field>
+    </record>
+    <record id="hospital_illness_2" model="hospital.illness">
+        <field name="name">Epstein-Barr</field>
+    </record>
+    <record id="hospital_illness_3" model="hospital.illness">
+        <field name="name">Diarrhea</field>
+    </record>
+</odoo>

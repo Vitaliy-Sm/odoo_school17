@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hospital_patient_1" model="hospital.patient">
+        <field name="name">Patient 1</field>
+    </record>
+    <record id="hospital_patient_2" model="hospital.patient">
+        <field name="name">Patient 2</field>
+    </record>
+    <record id="hospital_patient_3" model="hospital.patient">
+        <field name="name">Patient 3</field>
+    </record>
+</odoo>
