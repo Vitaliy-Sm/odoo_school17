@@ -18,6 +18,10 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="full_name"/>
+                        <field name="gender"/>
+                        <field name="phone"/>
+                        <field name="photo"/>
                     </group>
                 </sheet>
             </form>
