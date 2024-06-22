@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hospital_illness_category_1" model="hospital.illness.category">
+        <field name="name">Category1</field>
+    </record>
+    <record id="hospital_illness_category_2" model="hospital.illness.category">
+        <field name="name">Category2</field>
+    </record>
+    <record id="hospital_illness_category_3" model="hospital.illness.category">
+        <field name="name">Category3</field>
+    </record>
+     <record id="hospital_illness_category_1_1" model="hospital.illness.category">
+        <field name="name">Sub - Category1</field>
+        <field name="parent_id" ref="hospital_illness_category_1"/>
+    </record>
+</odoo>

@@ -4,3 +4,5 @@ hr_hospital.access_hospital_patient,access_hospital_patient,hr_hospital.model_ho
 hr_hospital.access_hospital_illness,access_hospital_illness,hr_hospital.model_hospital_illness,base.group_user,1,0,0,0
 hr_hospital.access_hospital_patient_visits,access_hospital_patient_visits,hr_hospital.model_hospital_patient_visits,base.group_user,1,0,0,0
 hr_hospital.access_hospital_diagnosis,access_hospital_diagnosis,hr_hospital.model_hospital_diagnosis,base.group_user,1,1,1,1
+hr_hospital.access_hospital_illness_category,access_hospital_illness_category,hr_hospital.model_hospital_illness_category,base.group_user,1,0,0,0
+

@@ -18,6 +18,7 @@
     ],
     'demo': [
         'demo/hospital_doctor_demo.xml',
+        'demo/hospital_illness_category_data.xml',
         'demo/hospital_illness_data.xml',
         'demo/hospital_patient_demo.xml',
     ],
