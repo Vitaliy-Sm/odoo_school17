@@ -2,11 +2,26 @@
 <odoo noupdate="1">
     <record id="hospital_illness_1" model="hospital.illness">
         <field name="name">Lupus</field>
+        <field name="category_id" ref="hospital_illness_category_1"/>
     </record>
     <record id="hospital_illness_2" model="hospital.illness">
         <field name="name">Epstein-Barr</field>
+        <field name="category_id" ref="hospital_illness_category_2"/>
     </record>
     <record id="hospital_illness_3" model="hospital.illness">
         <field name="name">Diarrhea</field>
+        <field name="category_id" ref="hospital_illness_category_3"/>
+    </record>
+    <record id="hospital_illness_4" model="hospital.illness">
+        <field name="name">Flu</field>
+        <field name="category_id" ref="hospital_illness_category_1_1"/>
+    </record>
+    <record id="hospital_illness_5" model="hospital.illness">
+        <field name="name">Cancer</field>
+        <field name="category_id" ref="hospital_illness_category_2"/>
+    </record>
+    <record id="hospital_illness_6" model="hospital.illness">
+        <field name="name">Food allergy</field>
+        <field name="category_id" ref="hospital_illness_category_3"/>
     </record>
 </odoo>

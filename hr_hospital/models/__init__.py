@@ -4,3 +4,4 @@ from . import hospital_patient
 from . import hospital_illness
 from . import hospital_patient_visits
 from . import hospital_diagnosis
+from . import hospital_illness_category

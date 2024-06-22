@@ -18,6 +18,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="category_id"/>
                     </group>
                 </sheet>
             </form>
@@ -29,4 +30,10 @@
         <field name="res_model">hospital.illness</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem id="hr_hospital_illness_view"
+              action="hospital_illness_act_window"
+              parent="hr_hospital_menu_root"
+              name="List of illnesses"
+              sequence="4"/>
 </odoo>
