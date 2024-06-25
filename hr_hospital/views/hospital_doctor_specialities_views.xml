@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_doctor_specialities_view_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.specialities.tree</field>
+        <field name="model">hospital.doctor.specialities</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" placeholder="Name"/>
+             </tree>
+        </field>
+    </record>
+    <record id="hospital_doctor_specialities_view_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.specialities.form</field>
+        <field name="model">hospital.doctor.specialities</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="hospital_doctor_specialities_act_window" model="ir.actions.act_window">
+        <field name="name">Doctor specialities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor.specialities</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hr_hospital_doctor_specialities_view"
+              action="hospital_doctor_specialities_act_window"
+              parent="hr_hospital_doctor_menu"
+              name="Medical specialities"
+              sequence="6"/>
+</odoo>

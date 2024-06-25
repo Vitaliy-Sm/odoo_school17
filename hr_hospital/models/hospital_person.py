@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, _
 
 
 class HospitalPersonMixin(models.AbstractModel):
@@ -14,5 +14,5 @@ class HospitalPersonMixin(models.AbstractModel):
         default='male',
         required=True,
         selection=[
-            ('male', 'Male'),
-            ('female', 'Female'), ])
+            ('male', _('Male')),
+            ('female', _('Female')), ])

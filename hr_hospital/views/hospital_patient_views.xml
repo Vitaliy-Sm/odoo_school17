@@ -6,6 +6,12 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" placeholder="Name"/>
+                <field name="full_name"/>
+                <field name="gender"/>
+                <field name="birthday_date"/>
+                <field name="age"/>
+                <field name="personal_doctor_id"/>
+                <field name="phone"/>
             </tree>
         </field>
     </record>
@@ -20,6 +26,11 @@
                         <field name="name"/>
                         <field name="full_name"/>
                         <field name="gender"/>
+                        <field name="birthday_date"/>
+                        <field name="age"/>
+                        <field name="personal_doctor_id"/>
+                        <field name="passport"/>
+                        <field name="contact"/>
                         <field name="phone"/>
                         <field name="photo"/>
                     </group>

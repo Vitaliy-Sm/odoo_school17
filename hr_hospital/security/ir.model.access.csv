@@ -1,8 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-hr_hospital.access_hospital_doctor,access_hospital_doctor,hr_hospital.model_hospital_doctor,base.group_user,1,0,0,0
-hr_hospital.access_hospital_patient,access_hospital_patient,hr_hospital.model_hospital_patient,base.group_user,1,0,0,0
-hr_hospital.access_hospital_illness,access_hospital_illness,hr_hospital.model_hospital_illness,base.group_user,1,0,0,0
-hr_hospital.access_hospital_patient_visits,access_hospital_patient_visits,hr_hospital.model_hospital_patient_visits,base.group_user,1,0,0,0
+hr_hospital.access_hospital_doctor_specialities,access_hospital_doctor_specialities,hr_hospital.model_hospital_doctor_specialities,base.group_user,1,1,1,1
+hr_hospital.access_hospital_doctor,access_hospital_doctor,hr_hospital.model_hospital_doctor,base.group_user,1,1,1,1
+hr_hospital.access_hospital_patient,access_hospital_patient,hr_hospital.model_hospital_patient,base.group_user,1,1,1,1
+hr_hospital.access_hospital_illness,access_hospital_illness,hr_hospital.model_hospital_illness,base.group_user,1,1,1,1
+hr_hospital.access_hospital_patient_visits,access_hospital_patient_visits,hr_hospital.model_hospital_patient_visits,base.group_user,1,1,1,1
 hr_hospital.access_hospital_diagnosis,access_hospital_diagnosis,hr_hospital.model_hospital_diagnosis,base.group_user,1,1,1,1
-hr_hospital.access_hospital_illness_category,access_hospital_illness_category,hr_hospital.model_hospital_illness_category,base.group_user,1,0,0,0
-
+hr_hospital.access_hospital_illness_category,access_hospital_illness_category,hr_hospital.model_hospital_illness_category,base.group_user,1,1,1,1
