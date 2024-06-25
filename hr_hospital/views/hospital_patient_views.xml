@@ -3,8 +3,17 @@
     <record id="hospital_patient_view_tree" model="ir.ui.view">
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
+        <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree edit="false" sample="1">
+
+                    <button
+                        type="action"
+                        name="%(hospital_doctor_change_wizard_action)d"
+                        string="Change doctor"
+                        class="btn-primary"
+                    />
+
                 <field name="name" placeholder="Name"/>
                 <field name="full_name"/>
                 <field name="gender"/>
@@ -20,7 +29,7 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-                <header></header>
+
                 <sheet>
                     <group>
                         <field name="name"/>

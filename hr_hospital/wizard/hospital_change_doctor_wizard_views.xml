@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_doctor_change_wizard_view_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.change.wizard.view.form</field>
+        <field name="model">hospital.doctor.change.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="doctor_id"/>
+                    <field name="patient_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="personal_doctor_id"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer class="button-box oe-right">
+                    <button name="change_doctor" type="object"
+                        string="Confirm" class="btn-primary oe-right"/>
+                    <button string="Cancel" class="btn-secondary oe-right" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_doctor_change_wizard_action" model="ir.actions.act_window">
+        <field name="name">Change personal doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor.change.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hospital_doctor_change_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>
