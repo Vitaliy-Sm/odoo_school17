@@ -6,4 +6,11 @@ class HospitalDoctor(models.Model):
     _description = 'Doctors'
     _inherit = 'hospital.person'
 
-    name = fields.Char()
+    specialities_id = fields.Many2many(
+        comodel_name='hospital.doctor.specialities',
+    )
+    is_intern = fields.Boolean(default=False, string='Intern')
+    mentor_id = fields.Many2one(
+        comodel_name='hospital.doctor',
+        domain="[('is_intern', '=', False)]",
+    )

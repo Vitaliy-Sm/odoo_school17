@@ -6,6 +6,12 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" placeholder="Name"/>
+                <field name="full_name"/>
+                <field name="gender"/>
+                <field name="specialities_id"/>
+                <field name="is_intern"/>
+                <field name="mentor_id"/>
+                <field name="phone"/>
             </tree>
         </field>
     </record>
@@ -15,15 +21,21 @@
         <field name="arch" type="xml">
             <form>
                 <header></header>
-                <sheet>
+                <group>
                     <group>
                         <field name="name"/>
                         <field name="full_name"/>
                         <field name="gender"/>
                         <field name="phone"/>
                         <field name="photo"/>
+                        <field name="specialities_id"/>
                     </group>
-                </sheet>
+                </group>
+                <group name="mention" string="Mention" >
+                    <field name="is_intern" widget="boolean_toggle"/>
+                    <field name="mentor_id" invisible="not is_intern"/>
+                </group>
+
             </form>
         </field>
     </record>

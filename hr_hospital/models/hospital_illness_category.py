@@ -9,9 +9,8 @@ class IllnessCategory(models.Model):
     rec_name = 'complete_name'
     _rec_order = 'complete_name'
 
-    name = fields.Char(string='Name', index=True, required=True)
+    name = fields.Char(index=True, required=True)
     complete_name = fields.Char(
-        string='Complete Name',
         recursive=True,
         compute='_compute_complete_name',
         store=True)
@@ -30,6 +29,7 @@ class IllnessCategory(models.Model):
     def _compute_complete_name(self):
         for category in self:
             if category.parent_id:
-                category.complete_name = f'{category.parent_id.name} / {category.name}'
+                category.complete_name = \
+                    f'{category.parent_id.name} / {category.name}'
             else:
                 category.complete_name = category.name
