@@ -26,6 +26,7 @@
         'demo/hospital_illness_category_data.xml',
         'demo/hospital_illness_data.xml',
         'demo/hospital_patient_demo.xml',
+        'demo/hospital_patient_visit_demo.xml'
     ],
     'application': False,
     'installable': True,
