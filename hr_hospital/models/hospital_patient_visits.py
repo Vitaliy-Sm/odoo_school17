@@ -9,7 +9,7 @@ class HospitalVisits(models.Model):
     _description = 'Patient visits'
 
     active = fields.Boolean(default=True)
-    name = fields.Char()
+    name = fields.Char(compute='_compute_name', readonly=True)
     status = fields.Selection(
         default='planned',
         selection=[
@@ -31,15 +31,21 @@ class HospitalVisits(models.Model):
         comodel_name='hospital.diagnosis',
         inverse_name='visit_id',)
 
-    is_visit_done = fields.Boolean(compute='_compute_is_visit_done')
-
-    @api.depends('visit_date')
-    def _compute_is_visit_done(self):
+    @api.depends('visit_date', 'doctor_id', 'patient_id', 'planned_visit_date')
+    def _compute_name(self):
         for rec in self:
             if rec.visit_date:
-                rec.is_visit_done = True
+                rec.name = '%s - %s : %s' % (
+                    rec.patient_id.name,
+                    rec.doctor_id.name,
+                    rec.visit_date.strftime('%d/%m/%Y %H:%M:%S'))
+            elif rec.planned_visit_date:
+                rec.name = '%s - %s : %s' % (
+                    rec.patient_id.name,
+                    rec.doctor_id.name,
+                    rec.planned_visit_date.strftime('%d/%m/%Y %H:%M:%S'))
             else:
-                rec.is_visit_done = False
+                rec.name = ''
 
     @api.onchange('doctor_id', 'visit_date')
     def _onchange_doctor_date(self):

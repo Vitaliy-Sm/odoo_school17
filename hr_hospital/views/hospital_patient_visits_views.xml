@@ -11,7 +11,7 @@
                 <field name="planned_visit_date"/>
                 <field name="visit_date"/>
                 <field name="status"/>
-                <field name="diagnosis_ids"/>
+                <field name="diagnosis_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -20,7 +20,9 @@
         <field name="model">hospital.patient.visits</field>
         <field name="arch" type="xml">
             <form>
-                <header></header>
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -28,19 +30,49 @@
                         <field name="patient_id"/>
                         <field name="planned_visit_date"/>
                         <field name="visit_date"/>
-                        <field name="status"/>
-                        <field name="diagnosis_ids"/>
-                        <field name="is_visit_done"/>
+                        <field name="diagnosis_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
+    <record id="hospital_patient_visits_calendar" model="ir.ui.view">
+        <field name="name">hospital.patient.visits.calendar</field>
+        <field name="model">hospital.patient.visits</field>
+        <field name="arch" type="xml">
+            <calendar date_start="planned_visit_date" string="Event Registration" color="status" >
+                <field name="name"/>
+                <field name="diagnosis_ids"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="hospital_patient_visits_search" model="ir.ui.view">
+        <field name="name">hospital.patient.visits.search</field>
+        <field name="model">hospital.patient.visits</field>
+        <field name="arch" type="xml">
+            <search string="Visits">
+                <group expand="0" string="Group By">
+                    <filter string="Visit status" name="status" domain="" context="{'group_by':'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="hospital_patient_visits_pivot" model="ir.ui.view">
+         <field name="name">hospital.patient.visits.pivot</field>
+         <field name="model">hospital.patient.visits</field>
+         <field name="arch" type="xml">
+             <pivot string="Visit Analysis">
+                 <field name="planned_visit_date" interval="month" type="col"/>
+                 <field name="status" type="col"/>
+                 <field name="id" type="row"/>
+             </pivot>
+         </field>
+    </record>
     <record id="hospital_patient_visits_act_window" model="ir.actions.act_window">
         <field name="name">Patient visits</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.patient.visits</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar,pivot</field>
     </record>
 
     <menuitem id="hr_hospital_patient_visits_view"
