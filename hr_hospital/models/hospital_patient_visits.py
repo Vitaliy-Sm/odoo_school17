@@ -78,6 +78,7 @@ class HospitalVisits(models.Model):
                 ('patient_id', '=', rec.patient_id.id),
                 ('planned_visit_date', '>=', start_date),
                 ('planned_visit_date', '<=', end_date),
+                ('id', '!=', rec.id),
             ])
             if result:
                 raise UserError(_('Choose another day'))
