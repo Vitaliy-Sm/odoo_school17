@@ -6,13 +6,15 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <tree edit="false" sample="1">
-
+                <header>
                     <button
-                        type="action"
-                        name="%(hospital_doctor_change_wizard_action)d"
-                        string="Change doctor"
-                        class="btn-primary"
-                    />
+                            type="action"
+                            name="%(hospital_doctor_change_wizard_action)d"
+                            string="Change doctor"
+                            class="btn-primary"
+                        />
+                </header>
+
 
                 <field name="name" placeholder="Name"/>
                 <field name="full_name"/>
