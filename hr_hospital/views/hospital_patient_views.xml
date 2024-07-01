@@ -31,22 +31,55 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-
+                <header>
+                    <button name="action_open_visit_history" type="object" string="Visits history"></button>
+                    <button name="action_create_visit" type="object" string="New visit" class="btn-primary"></button>
+                </header>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="full_name"/>
-                        <field name="gender"/>
-                        <field name="birthday_date"/>
-                        <field name="age"/>
-                        <field name="personal_doctor_id"/>
-                        <field name="passport"/>
-                        <field name="contact"/>
-                        <field name="phone"/>
-                        <field name="photo"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="full_name"/>
+                            <field name="gender"/>
+                            <field name="birthday_date"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="photo"
+                                   widget="image" class="oe_avatar"/>
+                            <field name="passport"/>
+                            <field name="contact"/>
+                            <field name="phone"/>
+                        </group>
                     </group>
+                     <notebook colspan="2">
+                         <page string="Medical info">
+                             <group>
+                                <field name="personal_doctor_id"/>
+                             </group>
+                         </page>
+                        <page string="Diagnosis history" name="diagnosis_history">
+                            <field name="visit_history_ids" readonly="1">
+                                <tree>
+                                    <field name="doctor_id"></field>
+                                    <field name="diagnosis_ids" widget="many2many_tags"></field>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+    <record id="hospital_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="full_name"/>
+                <field name="phone"/>
+            </search>
         </field>
     </record>
     <record id="hospital_patient_act_window" model="ir.actions.act_window">
