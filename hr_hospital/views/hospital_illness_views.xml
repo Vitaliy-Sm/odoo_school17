@@ -25,6 +25,18 @@
             </form>
         </field>
     </record>
+    <record id="hospital_illness_view_search" model="ir.ui.view">
+        <field name="name">hospital.illness.search</field>
+        <field name="model">hospital.illness</field>
+        <field name="arch" type="xml">
+            <search string="Illnesses">
+                <field name="name"/>
+                <searchpanel>
+                    <field name="category_id" string="Illnesses" hierarchize="1" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
     <record id="hospital_illness_act_window" model="ir.actions.act_window">
         <field name="name">List of illnesses</field>
         <field name="type">ir.actions.act_window</field>
