@@ -4,7 +4,7 @@
         <field name="name">House MD</field>
     </record>
     <record id="hospital_doctor_2" model="hospital.doctor">
-        <field name="name">Eric Forman MD</field>
+        <field name="name">Eric Foreman MD</field>
         <field name="mentor_id" ref="hospital_doctor_1"></field>
         <field name="is_intern" eval="True"></field>
     </record>
