@@ -1,7 +1,7 @@
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 
 
 class HospitalPatient(models.Model):
@@ -14,12 +14,15 @@ class HospitalPatient(models.Model):
         index=True,
     )
     visit_history_ids = fields.One2many(
-        comodel_name='hospital.patient.visits',
+        comodel_name='hospital.patient.visit',
         inverse_name='patient_id',
     )
-
-    birthday_date = fields.Date(string='Date of Birth')
-    age = fields.Integer(compute="_compute_age")
+    birthday_date = fields.Date(
+        string='Date of Birth',
+    )
+    age = fields.Integer(
+        compute="_compute_age",
+    )
     passport = fields.Char()
     contact = fields.Char()
 
@@ -29,7 +32,7 @@ class HospitalPatient(models.Model):
             'view_mode': 'tree',
             'view_id': False,
             'view_type': 'form',
-            'res_model': 'hospital.patient.visits',
+            'res_model': 'hospital.patient.visit',
             'type': 'ir.actions.act_window',
             'domain': [('patient_id', '=', self.id)],
         }
@@ -40,7 +43,7 @@ class HospitalPatient(models.Model):
             'view_mode': 'form',
             'view_id': False,
             'view_type': 'form',
-            'res_model': 'hospital.patient.visits',
+            'res_model': 'hospital.patient.visit',
             'type': 'ir.actions.act_window',
             'target': 'new',
             'context': {'default_patient_id': self.id},

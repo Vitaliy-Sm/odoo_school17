@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class IllnessCategory(models.Model):
@@ -9,7 +9,10 @@ class IllnessCategory(models.Model):
     rec_name = 'complete_name'
     _rec_order = 'complete_name'
 
-    name = fields.Char(index=True, required=True)
+    name = fields.Char(
+        index=True,
+        required=True,
+    )
     complete_name = fields.Char(
         recursive=True,
         compute='_compute_complete_name',
@@ -19,7 +22,10 @@ class IllnessCategory(models.Model):
         string='Parent Category',
         index=True,
         ondelete='cascade')
-    parent_path = fields.Char(unaccent=False, index=True)
+    parent_path = fields.Char(
+        unaccent=False,
+        index=True,
+    )
     child_id = fields.One2many(
         comodel_name='hospital.illness.category',
         inverse_name='parent_id',
