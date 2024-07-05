@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="hospital_patient_visits_view_tree" model="ir.ui.view">
-        <field name="name">hospital.patient.visits.tree</field>
-        <field name="model">hospital.patient.visits</field>
+    <record id="hospital_patient_visit_view_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.tree</field>
+        <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" placeholder="Name"/>
@@ -15,9 +15,9 @@
             </tree>
         </field>
     </record>
-    <record id="hospital_patient_visits_view_form" model="ir.ui.view">
-        <field name="name">hospital.patient.visits.form</field>
-        <field name="model">hospital.patient.visits</field>
+    <record id="hospital_patient_visit_view_form" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.form</field>
+        <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
             <form>
                 <header>
@@ -36,9 +36,9 @@
             </form>
         </field>
     </record>
-    <record id="hospital_patient_visits_calendar" model="ir.ui.view">
-        <field name="name">hospital.patient.visits.calendar</field>
-        <field name="model">hospital.patient.visits</field>
+    <record id="hospital_patient_visit_calendar" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.calendar</field>
+        <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
             <calendar date_start="planned_visit_date" string="Event Registration" color="status" >
                 <field name="name"/>
@@ -46,9 +46,9 @@
             </calendar>
         </field>
     </record>
-    <record id="hospital_patient_visits_search" model="ir.ui.view">
-        <field name="name">hospital.patient.visits.search</field>
-        <field name="model">hospital.patient.visits</field>
+    <record id="hospital_patient_visit_search" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.search</field>
+        <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
             <search string="Visits">
                 <group expand="0" string="Group By">
@@ -57,9 +57,9 @@
             </search>
         </field>
     </record>
-    <record id="hospital_patient_visits_pivot" model="ir.ui.view">
-         <field name="name">hospital.patient.visits.pivot</field>
-         <field name="model">hospital.patient.visits</field>
+    <record id="hospital_patient_visit_pivot" model="ir.ui.view">
+         <field name="name">hospital.patient.visit.pivot</field>
+         <field name="model">hospital.patient.visit</field>
          <field name="arch" type="xml">
              <pivot string="Visit Analysis">
                  <field name="planned_visit_date" interval="month" type="col"/>
@@ -68,15 +68,15 @@
              </pivot>
          </field>
     </record>
-    <record id="hospital_patient_visits_act_window" model="ir.actions.act_window">
+    <record id="hospital_patient_visit_act_window" model="ir.actions.act_window">
         <field name="name">Patient visits</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">hospital.patient.visits</field>
+        <field name="res_model">hospital.patient.visit</field>
         <field name="view_mode">tree,form,calendar,pivot</field>
     </record>
 
-    <menuitem id="hr_hospital_patient_visits_view"
-              action="hospital_patient_visits_act_window"
+    <menuitem id="hr_hospital_patient_visit_view"
+              action="hospital_patient_visit_act_window"
               parent="hr_hospital_patient_menu"
               name="Patient visits"
               sequence="6" />

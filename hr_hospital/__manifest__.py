@@ -18,7 +18,7 @@
         'views/hospital_doctor_specialities_views.xml',
         'views/hospital_patient_views.xml',
         'views/hospital_illness_views.xml',
-        'views/hospital_patient_visits_views.xml',
+        'views/hospital_patient_visit_views.xml',
         'views/hospital_diagnosis_views.xml',
     ],
     'demo': [

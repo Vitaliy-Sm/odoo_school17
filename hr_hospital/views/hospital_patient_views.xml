@@ -14,8 +14,6 @@
                             class="btn-primary"
                         />
                 </header>
-
-
                 <field name="name" placeholder="Name"/>
                 <field name="full_name"/>
                 <field name="gender"/>
@@ -32,8 +30,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_open_visit_history" type="object" string="Visits history"></button>
-                    <button name="action_create_visit" type="object" string="New visit" class="btn-primary"></button>
+                    <button name="action_open_visit_history" type="object" string="Visits history"/>
+                    <button name="action_create_visit" type="object" string="New visit" class="btn-primary"/>
                 </header>
                 <sheet>
                     <group>
@@ -61,8 +59,8 @@
                         <page string="Diagnosis history" name="diagnosis_history">
                             <field name="visit_history_ids" readonly="1">
                                 <tree>
-                                    <field name="doctor_id"></field>
-                                    <field name="diagnosis_ids" widget="many2many_tags"></field>
+                                    <field name="doctor_id"/>
+                                    <field name="diagnosis_ids" widget="many2many_tags"/>
                                 </tree>
                             </field>
                         </page>

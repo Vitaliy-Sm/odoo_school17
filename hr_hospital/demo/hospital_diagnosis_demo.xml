@@ -3,42 +3,42 @@
     <record id="hospital_diagnosis_1" model="hospital.diagnosis">
         <field name="name">Some diagnosis 1</field>
         <field name="visit_id" ref="hospital_patient_visits_1"/>
-        <field name="illness_id" ref="hospital_illness_1"></field>
+        <field name="illness_id" ref="hospital_illness_1"/>
         <field name="description">Drink more water</field>
         <field name="approved" eval="True"/>
     </record>
     <record id="hospital_diagnosis_2" model="hospital.diagnosis">
         <field name="name">Some diagnosis 2</field>
         <field name="visit_id" ref="hospital_patient_visits_2"/>
-        <field name="illness_id" ref="hospital_illness_2"></field>
+        <field name="illness_id" ref="hospital_illness_2"/>
         <field name="description">No more alcohol</field>
         <field name="approved" eval="False"/>
     </record>
     <record id="hospital_diagnosis_3" model="hospital.diagnosis">
         <field name="name">Some diagnosis 3</field>
         <field name="visit_id" ref="hospital_patient_visits_2"/>
-        <field name="illness_id" ref="hospital_illness_6"></field>
+        <field name="illness_id" ref="hospital_illness_6"/>
         <field name="description">Dont eat bat</field>
         <field name="approved" eval="False"/>
     </record>
     <record id="hospital_diagnosis_4" model="hospital.diagnosis">
         <field name="name">Some diagnosis 4</field>
         <field name="visit_id" ref="hospital_patient_visits_3"/>
-        <field name="illness_id" ref="hospital_illness_4"></field>
+        <field name="illness_id" ref="hospital_illness_4"/>
         <field name="description">Incurable</field>
         <field name="approved" eval="True"/>
     </record>
     <record id="hospital_diagnosis_5" model="hospital.diagnosis">
         <field name="name">Some diagnosis 5</field>
         <field name="visit_id" ref="hospital_patient_visits_4"/>
-        <field name="illness_id" ref="hospital_illness_6"></field>
+        <field name="illness_id" ref="hospital_illness_6"/>
         <field name="description">I have no idea</field>
         <field name="approved" eval="False"/>
     </record>
     <record id="hospital_diagnosis_6" model="hospital.diagnosis">
         <field name="name">Some diagnosis 6</field>
         <field name="visit_id" ref="hospital_patient_visits_2"/>
-        <field name="illness_id" ref="hospital_illness_3"></field>
+        <field name="illness_id" ref="hospital_illness_3"/>
         <field name="description">I have no idea</field>
         <field name="approved" eval="False"/>
     </record>

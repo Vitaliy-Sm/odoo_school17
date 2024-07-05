@@ -5,23 +5,23 @@
     </record>
     <record id="hospital_doctor_2" model="hospital.doctor">
         <field name="name">Eric Foreman MD</field>
-        <field name="mentor_id" ref="hospital_doctor_1"></field>
-        <field name="is_intern" eval="True"></field>
+        <field name="mentor_id" ref="hospital_doctor_1"/>
+        <field name="is_intern" eval="True"/>
     </record>
     <record id="hospital_doctor_3" model="hospital.doctor">
         <field name="name">Robert Chase MD</field>
-        <field name="mentor_id" ref="hospital_doctor_1"></field>
-        <field name="is_intern" eval="True"></field>
+        <field name="mentor_id" ref="hospital_doctor_1"/>
+        <field name="is_intern" eval="True"/>
     </record>
     <record id="hospital_doctor_4" model="hospital.doctor">
         <field name="name">Alison</field>
         <field name="full_name">Cameron</field>
-        <field name="mentor_id" ref="hospital_doctor_1"></field>
-        <field name="is_intern" eval="True"></field>
+        <field name="mentor_id" ref="hospital_doctor_1"/>
+        <field name="is_intern" eval="True"/>
     </record>
     <record id="hospital_doctor_5" model="hospital.doctor">
         <field name="name">Thirteenth</field>
-        <field name="mentor_id" ref="hospital_doctor_1"></field>
-        <field name="is_intern" eval="True"></field>
+        <field name="mentor_id" ref="hospital_doctor_1"/>
+        <field name="is_intern" eval="True"/>
     </record>
 </odoo>

@@ -1,22 +1,27 @@
 from datetime import datetime, time
 
-from odoo import models, fields, _, api
-from odoo.exceptions import UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
-class HospitalVisits(models.Model):
-    _name = 'hospital.patient.visits'
+class HospitalVisit(models.Model):
+    _name = 'hospital.patient.visit'
     _description = 'Patient visits'
 
-    active = fields.Boolean(default=True)
-    name = fields.Char(compute='_compute_name', readonly=True)
+    active = fields.Boolean(
+        default=True,
+    )
+    name = fields.Char(
+        compute='_compute_name',
+        readonly=True,
+    )
     status = fields.Selection(
         default='planned',
         selection=[
             ('planned', _('Planned')),
             ('completed', _('Completed')),
-            ('canceled', _('Canceled')), ])
-
+            ('canceled', _('Canceled')), ],
+    )
     planned_visit_date = fields.Datetime()
     visit_date = fields.Datetime()
     doctor_id = fields.Many2one(
@@ -29,7 +34,8 @@ class HospitalVisits(models.Model):
     )
     diagnosis_ids = fields.One2many(
         comodel_name='hospital.diagnosis',
-        inverse_name='visit_id',)
+        inverse_name='visit_id',
+    )
 
     @api.depends('visit_date', 'doctor_id', 'patient_id', 'planned_visit_date')
     def _compute_name(self):
@@ -47,20 +53,16 @@ class HospitalVisits(models.Model):
             else:
                 rec.name = ''
 
-    @api.onchange('doctor_id', 'visit_date')
-    def _onchange_doctor_date(self):
-        res = {}
+    @api.constrains('doctor_id', 'visit_date')
+    def _check_doctor_date(self):
         if self.visit_date:
-            res['warning'] = {
-                'title': _('Error!'),
-                'message':
-                    _('Can`t change Doctor or Visit date if fill visit date.')}
-        return res
+            raise ValidationError(
+                _('Can`t change Doctor or Visit date if fill visit date.'))
 
     @api.ondelete(at_uninstall=False)
     def _unlink_except_with_diagnosis(self):
         if any(rec.diagnosis_ids for rec in self):
-            raise UserError(
+            raise ValidationError(
                 _('Can`t delete visit with a diagnosis.')
             )
 
@@ -68,7 +70,7 @@ class HospitalVisits(models.Model):
     def constrains_active(self):
         for obj in self:
             if not obj.active and any(rec.diagnosis_ids for rec in self):
-                raise UserError(_('Can`t archive visit with diagnosis'))
+                raise ValidationError(_('Can`t archive visit with diagnosis'))
 
     @api.constrains('planned_visit_date')
     def check_time_date(self):
@@ -79,7 +81,7 @@ class HospitalVisits(models.Model):
             end_date = datetime.combine(
                 rec.planned_visit_date.date(),
                 time(23, 59, 59))
-            result = self.env['hospital.patient.visits'].search([
+            result = self.env['hospital.patient.visit'].search([
                 ('doctor_id', '=', rec.doctor_id.id),
                 ('patient_id', '=', rec.patient_id.id),
                 ('planned_visit_date', '>=', start_date),
@@ -87,4 +89,4 @@ class HospitalVisits(models.Model):
                 ('id', '!=', rec.id),
             ])
             if result:
-                raise UserError(_('Choose another day'))
+                raise ValidationError(_('Choose another day'))

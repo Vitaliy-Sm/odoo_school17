@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import fields, models
 
 
 class HospitalIllness(models.Model):
@@ -6,4 +6,6 @@ class HospitalIllness(models.Model):
     _description = 'List of illnesses'
 
     name = fields.Char()
-    category_id = fields.Many2one('hospital.illness.category')
+    category_id = fields.Many2one(
+        comodel_name='hospital.illness.category',
+    )

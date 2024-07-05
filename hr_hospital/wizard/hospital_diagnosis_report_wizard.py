@@ -1,4 +1,4 @@
-from odoo import fields, models, _
+from odoo import _, fields, models
 
 
 class CreateDiagnosisReport(models.TransientModel):
@@ -7,12 +7,18 @@ class CreateDiagnosisReport(models.TransientModel):
 
     doctor_ids = fields.Many2many(
         comodel_name='hospital.doctor',
-        string="Doctor")
+        string="Doctor",
+    )
     illness_ids = fields.Many2many(
         comodel_name='hospital.illness',
-        string="Illness")
-    start_date = fields.Date(required=True)
-    end_date = fields.Date(required=True)
+        string="Illness",
+    )
+    start_date = fields.Date(
+        required=True,
+    )
+    end_date = fields.Date(
+        required=True,
+    )
 
     def action_create_report(self):
         domain = [("create_date", ">=", str(self.start_date)),

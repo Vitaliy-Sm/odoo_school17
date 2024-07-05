@@ -1,4 +1,4 @@
-from odoo import models, fields, _
+from odoo import _, fields, models
 
 
 class HospitalDoctor(models.Model):
@@ -6,15 +6,16 @@ class HospitalDoctor(models.Model):
     _description = 'Doctors'
     _inherit = 'hospital.person'
 
-    specialities_ids = fields.Many2many(
-        comodel_name='hospital.doctor.specialities',
+    speciality_ids = fields.Many2many(
+        comodel_name='hospital.doctor.speciality',
     )
-    is_intern = fields.Boolean(default=False, string='Intern')
+    is_intern = fields.Boolean(
+        string='Intern',
+    )
     mentor_id = fields.Many2one(
         comodel_name='hospital.doctor',
         domain="[('is_intern', '=', False)]",
     )
-
     intern_ids = fields.One2many(
         comodel_name='hospital.doctor',
         inverse_name='mentor_id',
@@ -28,8 +29,22 @@ class HospitalDoctor(models.Model):
             'view_mode': 'form',
             'view_id': False,
             'view_type': 'form',
-            'res_model': 'hospital.patient.visits',
+            'res_model': 'hospital.patient.visit',
             'type': 'ir.actions.act_window',
             'target': 'new',
             'context': {'default_doctor_id': self.id},
+        }
+
+    def action_open_diagnosis_to_approve(self):
+        domain = [('approved', '=', False),
+                  ('visit_id.doctor_id.mentor_id', '=', self.id)]
+
+        return {
+            'name': _('Diagnosis to approve'),
+            'view_mode': 'tree',
+            'view_id': False,
+            'view_type': 'kanban',
+            'res_model': 'hospital.diagnosis',
+            'type': 'ir.actions.act_window',
+            'domain': domain,
         }
