@@ -20,6 +20,8 @@
         'views/hospital_illness_views.xml',
         'views/hospital_patient_visit_views.xml',
         'views/hospital_diagnosis_views.xml',
+
+        'reports/hospital_doctor_report.xml'
     ],
     'demo': [
         'demo/hospital_doctor_demo.xml',
