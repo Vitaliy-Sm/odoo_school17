@@ -22,6 +22,15 @@ class HospitalDoctor(models.Model):
         string='Interns',
         readonly=True,
     )
+    patient_ids = fields.One2many(
+        comodel_name='hospital.patient',
+        inverse_name='personal_doctor_id',
+        string='Patients',
+    )
+    visit_history_ids = fields.One2many(
+        comodel_name='hospital.patient.visit',
+        inverse_name='doctor_id',
+    )
 
     def action_new_visit(self):
         return {
@@ -43,7 +52,7 @@ class HospitalDoctor(models.Model):
             'name': _('Diagnosis to approve'),
             'view_mode': 'tree',
             'view_id': False,
-            'view_type': 'kanban',
+            'view_type': 'form',
             'res_model': 'hospital.diagnosis',
             'type': 'ir.actions.act_window',
             'domain': domain,

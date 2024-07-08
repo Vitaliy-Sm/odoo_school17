@@ -25,6 +25,17 @@ class HospitalPatient(models.Model):
     )
     passport = fields.Char()
     contact = fields.Char()
+    last_visit_status = fields.Char(
+        compute="_compute_last_visit_status",
+    )
+
+    @api.depends('visit_history_ids')
+    def _compute_last_visit_status(self):
+        for rec in self:
+            if rec.visit_history_ids:
+                rec.last_visit_status = rec.visit_history_ids[-1].status
+            else:
+                rec.last_visit_status = ''
 
     def action_open_visit_history(self):
         return {

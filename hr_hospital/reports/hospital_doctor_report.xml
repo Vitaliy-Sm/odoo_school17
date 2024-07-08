@@ -1,0 +1,121 @@
+<odoo>
+    <template id="doctor_report_template">
+        <div t-call="web.html_container">
+
+            <div t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+                        <div class="card" style="width: 18rem;">
+                            <img t-if="doc.photo" t-att-src="image_data_uri(doc.photo)" alt="Doctors photo"/>
+                              <div class="card-body">
+                                <h5 class="card-title"><span t-field="doc.name"/></h5>
+                                <p class="card-text"><span t-field="doc.speciality_ids"/></p>
+                              </div>
+                        </div>
+                        <div style="display: flex; justify-content: center">
+                            <div class="page">
+                                <br/>
+                                <br/>
+                                <h2>Visit history</h2>
+                                <table class="table table-striped table-bordered"
+                                       style="boarder: 4px solid black">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Planned date</th>
+                                        <th>Visit date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <t t-set="visit_history_sorted" t-value="doc.visit_history_ids.sorted(key=lambda a: a.planned_visit_date, reverse=True)"/>
+                                    <t t-foreach="visit_history_sorted" t-as="visit_history_line">
+                                        <tr>
+                                            <td><span t-field="visit_history_line.name"/></td>
+                                            <td><span t-field="visit_history_line.planned_visit_date" t-field-options='{"widget":"date"}'/></td>
+                                            <td><span t-field="visit_history_line.visit_date" t-field-options='{"widget":"date"}'/></td>
+                                            <t t-if="visit_history_line.status == 'planned'">
+                                                <td style="background-color: yellow"><span t-field="visit_history_line.status"/></td>
+                                            </t>
+                                            <t t-elif="visit_history_line.status == 'completed'">
+                                                <td style="background-color: green"><span t-field="visit_history_line.status"/></td>
+                                            </t>
+                                            <t t-elif="visit_history_line.status == 'canceled'">
+                                                <td style="background-color: red"><span t-field="visit_history_line.status"/></td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </table>
+                                <br/>
+                                <br/>
+                                <h2>Patients</h2>
+                                 <table class="table table-striped table-bordered"
+                                       style="boarder: 4px solid black">
+                                    <tr>
+                                        <th>Patient name</th>
+                                        <th>Gender</th>
+                                        <th>Date of birth</th>
+                                        <th>Phone</th>
+                                        <th>Last visit status</th>
+                                    </tr>
+
+                                    <t t-foreach="doc.patient_ids" t-as="patient">
+                                        <tr>
+                                            <td><span t-field="patient.name"/></td>
+                                            <td><span t-field="patient.gender"/></td>
+                                            <td><span t-field="patient.birthday_date" t-field-options='{"widget":"date"}'/></td>
+                                            <td><span t-field="patient.phone"/></td>
+                                            <t t-if="patient.last_visit_status">
+                                                <t t-if="patient.last_visit_status == 'planned'">
+                                                    <td style="background-color: yellow"><span t-field="patient.last_visit_status"/></td>
+                                                </t>
+                                                <t t-elif="patient.last_visit_status == 'completed'">
+                                                    <td style="background-color: green"><span t-field="patient.last_visit_status"/></td>
+                                                </t>
+                                                <t t-elif="patient.last_visit_status == 'canceled'">
+                                                    <td style="background-color: red"><span t-field="patient.last_visit_status"/></td>
+                                                </t>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </table>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <p>
+                                <b>Date: </b><span t-esc="time.strftime('%Y-%m-%d %H:%M:%S')"/><br/>
+                                <b>Address: </b><span t-esc="res_company.street"/>
+                            </p>
+                        </div>
+                    </div>
+
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <record id="paperformat_a4_portrait_custom" model="report.paperformat">
+        <field name="name">A4 Portrait</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">40</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="hospital_doctor_report" model="ir.actions.report">
+        <field name="name">Doctor Report</field>
+        <field name="model">hospital.doctor</field>
+        <field name="report_type">qweb-html</field>
+        <field name="paperformat_id" ref="hr_hospital.paperformat_a4_portrait_custom"/>
+        <field name="report_name">hr_hospital.doctor_report_template</field>
+        <field name="report_file">hr_hospital.doctor_report_template</field>
+        <field name="binding_model_id" ref="model_hospital_doctor"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
