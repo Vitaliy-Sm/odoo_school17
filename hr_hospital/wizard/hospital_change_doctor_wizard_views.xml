@@ -30,5 +30,6 @@
         <field name="view_mode">form</field>
         <field name="view_id" ref="hospital_doctor_change_wizard_view_form"/>
         <field name="target">new</field>
+<!--        <field name="context">{'patient_ids': active_ids}</field>-->
     </record>
 </odoo>
