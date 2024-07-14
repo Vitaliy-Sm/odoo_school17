@@ -110,7 +110,7 @@
     <record id="hospital_doctor_report" model="ir.actions.report">
         <field name="name">Doctor Report</field>
         <field name="model">hospital.doctor</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="paperformat_id" ref="hr_hospital.paperformat_a4_portrait_custom"/>
         <field name="report_name">hr_hospital.doctor_report_template</field>
         <field name="report_file">hr_hospital.doctor_report_template</field>

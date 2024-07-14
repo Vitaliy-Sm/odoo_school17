@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ChangePersonalDoctor(models.TransientModel):
@@ -16,3 +16,10 @@ class ChangePersonalDoctor(models.TransientModel):
 
     def change_doctor(self):
         self.patient_ids.personal_doctor_id = self.doctor_id
+
+    @api.model
+    def default_get(self, fields):
+        res = super().default_get(fields)
+        if self.env.context.get('active_ids'):
+            res['patient_ids'] = [(6, 0, self.env.context.get('active_ids'))]
+        return res

@@ -50,7 +50,7 @@ class HospitalDoctor(models.Model):
 
         return {
             'name': _('Diagnosis to approve'),
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'view_id': False,
             'view_type': 'form',
             'res_model': 'hospital.diagnosis',
